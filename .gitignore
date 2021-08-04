@@ -1,9 +1,15 @@
-# Ignore These
-admin/dbh.php
-dbh.php
-storage/proof_of_payment/*
-/admin/vendor
-gencert.php
-
-# Do NOT Ignore
-!storage/proof_of_payment/index.html
+/node_modules
+/public/hot
+/public/storage
+/storage/*.key
+/vendor
+.env
+.env.backup
+.phpunit.result.cache
+docker-compose.override.yml
+Homestead.json
+Homestead.yaml
+npm-debug.log
+yarn-error.log
+/.idea
+/.vscode

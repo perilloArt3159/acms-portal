@@ -1,0 +1,5 @@
+[04-Aug-2021 13:51:45 UTC] PHP Warning:  require(/home/zen/www/portal.acms/vendor/autoload.php): Failed to open stream: No such file or directory in /home/zen/www/portal.acms/artisan on line 18
+[04-Aug-2021 13:51:45 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/zen/www/portal.acms/vendor/autoload.php' (include_path='.:') in /home/zen/www/portal.acms/artisan:18
+Stack trace:
+#0 {main}
+  thrown in /home/zen/www/portal.acms/artisan on line 18
