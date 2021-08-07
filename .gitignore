@@ -1,6 +1,7 @@
 /node_modules
 /public/hot
 /public/storage
+/public/php_errors.log
 /storage/*.key
 /vendor
 .env
@@ -8,6 +9,7 @@
 .phpunit.result.cache
 docker-compose.override.yml
 Homestead.json
+php_errors.log
 Homestead.yaml
 npm-debug.log
 yarn-error.log
