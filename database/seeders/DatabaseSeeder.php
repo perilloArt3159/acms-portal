@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Database\Seeders\Users\UserSeeder;
 use Database\Seeders\Members\MemberCategorySeeder;
+use Database\Seeders\Members\MemberSeeder; 
 
 use Illuminate\Database\Seeder;
 
@@ -22,7 +23,8 @@ class DatabaseSeeder extends Seeder
             $this->call(
                 [
                     UserSeeder::class,
-                    MemberCategorySeeder::class, 
+                    MemberCategorySeeder::class,
+                    MemberSeeder::class,  
                 ]
             );
         }

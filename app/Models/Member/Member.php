@@ -73,6 +73,6 @@ class Member extends Model
 
     public function memberCategory()
     {
-        return $this->belongsTo("App\Models\Member\MemberCategory", "member_id", "id");
+        return $this->belongsTo("App\Models\Member\MemberCategory", "member_category_id", "id");
     }
 }
