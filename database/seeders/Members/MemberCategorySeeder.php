@@ -2,6 +2,8 @@
 
 namespace Database\Seeders\Members;
 
+use App\Models\Member\MemberCategory; 
+
 use Illuminate\Database\Seeder;
 
 class MemberCategorySeeder extends Seeder
@@ -13,6 +15,6 @@ class MemberCategorySeeder extends Seeder
      */
     public function run()
     {
-        //
+        MemberCategory::factory(10)->create();
     }
 }
