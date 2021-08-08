@@ -66,6 +66,11 @@ class Member extends Model
         ];
     }
 
+    /**
+     * Generate Fullname Attribute.
+     *
+     * @var string
+     */
     public function getFullnameAttribute(): string
     {
         return $this->last_name . ' ' . $this->first_name . ' ' . $this->middle_name;
@@ -73,6 +78,16 @@ class Member extends Model
 
     public function memberCategory()
     {
-        return $this->belongsTo("App\Models\Member\MemberCategory", "member_category_id", "id");
+        return $this->belongsTo('App\Models\Member\MemberCategory', 'member_category_id', 'id');
+    }
+
+    public function contact() 
+    {
+        return $this->hasOne('App\Member\MemberContact', 'member_id', 'id'); 
+    }
+
+    public function license() 
+    {
+        return $this->hasOne('App\Member\MemberLicense', 'member_id', 'id'); 
     }
 }

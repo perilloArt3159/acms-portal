@@ -36,11 +36,16 @@ class MemberCategory extends Model
 
     public function createdByUser()
     {
-        return $this->belongsTo("App\Models\User", 'created_by_user_id');
+        return $this->belongsTo("App\Models\User", 'created_by_user_id', 'id');
     }
 
     public function updatedByUser()
     {
-        return $this->belongsTo("App\Models\User", 'updated_by_user_id');
+        return $this->belongsTo("App\Models\User", 'updated_by_user_id', 'id');
+    }
+
+    public function members() 
+    {
+        return $this->hasMany('App\Models\Member\Member', 'member_category_id', 'id'); 
     }
 }
