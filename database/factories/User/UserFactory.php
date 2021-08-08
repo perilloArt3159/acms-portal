@@ -23,12 +23,9 @@ class UserFactory extends Factory
      */
     public function definition()
     {
-
         $name           =   $this->faker->name();
-        $slug           =   Str::slug($name); 
 
         return [
-            'slug'              =>  $slug,
             'name'              =>  $name,
             'email'             =>  $this->faker->unique()->safeEmail(),
             'email_verified_at' =>  now(),

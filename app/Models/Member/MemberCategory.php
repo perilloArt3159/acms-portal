@@ -2,13 +2,15 @@
 
 namespace App\Models\Member;
 
+use Cviebrock\EloquentSluggable\Sluggable;
+
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class MemberCategory extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory, SoftDeletes, Sluggable;
 
     protected $table = "member_category";
 
@@ -17,6 +19,20 @@ class MemberCategory extends Model
         'updated_at'        => 'datetime:Y-m-d H:i:s',
         'deleted_at'        => 'datetime:Y-m-d H:i:s',
     ];
+
+    /**
+     * Return the sluggable configuration array for this model.
+     *
+     * @return array
+     */
+    public function sluggable(): array
+    {
+        return [
+            'slug' => [
+                'source' => 'name'
+            ]
+        ];
+    }
 
     public function createdByUser()
     {
