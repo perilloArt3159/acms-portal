@@ -18,8 +18,8 @@ class CreateMemberLicensesTable extends Migration
             $table->foreignId('member_id')->constrained('members')->onUpdate('cascade')->onDelete('cascade');
             $table->string('pma_number'); 
             $table->string('prc_number'); 
-            $table->date('expiration_date'); 
             $table->string('field_of_practice'); 
+            $table->date('expiration_date'); 
             $table->timestamps();
         });
     }

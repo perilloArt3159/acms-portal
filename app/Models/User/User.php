@@ -13,6 +13,13 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable, Sluggable;
 
+    //** Variables */
+
+    /**
+     * Define Table Name.
+     *
+     * @var string
+     */
     protected $table = "users";
 
     /**
@@ -45,6 +52,16 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    /** 
+     * The relationships that should always be loaded. 
+     * 
+     * @var array 
+     * 
+     */
+    protected $with = []; 
+
+    //** Package Related Functions */
+
     /**
      * Return the sluggable configuration array for this model.
      *
@@ -58,4 +75,12 @@ class User extends Authenticatable
             ]
         ];
     }
+
+    //** Accessors & Mutators */
+
+    //...
+    
+    //** belongsTo, belongsToMany, hasOne, hasMany relationships */
+
+    //...
 }

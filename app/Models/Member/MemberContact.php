@@ -11,6 +11,8 @@ class MemberContact extends Model
 {
     use HasFactory;
 
+    //** Variables */
+
     /**
      * Define Table Name.
      *
@@ -47,6 +49,24 @@ class MemberContact extends Model
         'created_at'        => 'datetime:Y-m-d H:i:s',
         'updated_at'        => 'datetime:Y-m-d H:i:s',
     ];
+
+    /** 
+     * The relationships that should always be loaded. 
+     * 
+     * @var array 
+     * 
+     */
+    protected $with = []; 
+
+    //** Package Related Functions */
+
+    //...
+
+    //** Accessors & Mutators */
+
+    //...
+
+    //** belongsTo, belongsToMany, hasOne, hasMany relationships */
 
     public function member() 
     {

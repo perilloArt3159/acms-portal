@@ -12,6 +12,8 @@ class Member extends Model
 {
     use HasFactory, SoftDeletes, Sluggable;
 
+    //** Variables */
+
     /**
      * Define Table Name.
      *
@@ -52,6 +54,20 @@ class Member extends Model
         'deleted_at'        => 'datetime:Y-m-d H:i:s',
     ];
 
+    /** 
+     * The relationships that should always be loaded. 
+     * 
+     * @var array 
+     * 
+     */
+    protected $with = [
+        'memberCategory', 
+        'contact', 
+        'license'
+    ]; 
+
+    //** Package Related Functions */
+
     /**
      * Return the sluggable configuration array for this model.
      *
@@ -66,6 +82,8 @@ class Member extends Model
         ];
     }
 
+    //** Accessors & Mutators */
+
     /**
      * Generate Fullname Attribute.
      *
@@ -76,6 +94,8 @@ class Member extends Model
         return $this->last_name . ' ' . $this->first_name . ' ' . $this->middle_name;
     }
 
+    //** belongsTo, belongsToMany, hasOne, hasMany relationships */
+
     public function memberCategory()
     {
         return $this->belongsTo('App\Models\Member\MemberCategory', 'member_category_id', 'id');
@@ -83,11 +103,11 @@ class Member extends Model
 
     public function contact() 
     {
-        return $this->hasOne('App\Member\MemberContact', 'member_id', 'id'); 
+        return $this->hasOne('App\Models\Member\MemberContact', 'member_id', 'id'); 
     }
 
     public function license() 
     {
-        return $this->hasOne('App\Member\MemberLicense', 'member_id', 'id'); 
+        return $this->hasOne('App\Models\Member\MemberLicense', 'member_id', 'id'); 
     }
 }

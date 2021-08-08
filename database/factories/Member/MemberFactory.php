@@ -27,7 +27,7 @@ class MemberFactory extends Factory
             'first_name'    => Str::upper($this->faker->firstName()),             
             'last_name'     => Str::upper($this->faker->lastName()),
             'middle_name'   => rand(0, 1) ? Str::upper($this->faker->lastName()) : null, 
-            'birth_date'    => $this->faker->date(),
+            'birth_date'    => $this->faker->dateTimeBetween('-75 years', '-15 years'),
         ];
     }
 }
