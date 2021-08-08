@@ -12,6 +12,8 @@ class {{ class }} extends Model
 {
     use HasFactory, SoftDeletes, Sluggable;
 
+    //** Variables */
+
     /**
      * Define Table Name.
      *
@@ -61,4 +63,16 @@ class {{ class }} extends Model
             ]
         ];
     }
+
+    //** Package Related Functions */
+
+    //...
+
+    //** Accessors & Mutators */
+
+    //...
+
+    //** belongsTo, belongsToMany, hasOne, hasMany relationships */
+
+    //...
 }
