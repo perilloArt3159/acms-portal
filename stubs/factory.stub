@@ -5,6 +5,7 @@ namespace {{ factoryNamespace }};
 use {{ namespacedModel }};
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str; 
 
 class {{ factory }}Factory extends Factory
 {
