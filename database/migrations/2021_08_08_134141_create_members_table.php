@@ -15,7 +15,7 @@ class CreateMembersTable extends Migration
     {
         Schema::create('members', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('member_category_id')->nullable()->constrained('member_category')->onUpdate('cascade')->onDelete('set null');
+            $table->foreignId('member_category_id')->nullable()->constrained('member_categories')->onUpdate('cascade')->onDelete('set null');
             $table->string('slug')->unique();
             $table->string('first_name'); 
             $table->string('last_name');  

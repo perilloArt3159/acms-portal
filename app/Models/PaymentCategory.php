@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\Member;
+namespace App\Models;
 
 use Cviebrock\EloquentSluggable\Sluggable;
 
@@ -8,29 +8,47 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class MemberCategory extends Model
+class PaymentCategory extends Model
 {
     use HasFactory, SoftDeletes, Sluggable;
 
     //** Variables */
 
-    protected $table = "member_categories";
+    /**
+     * Define Table Name.
+     *
+     * @var string
+     */
+    protected $table = ""; 
 
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+      
+    ];
+
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+    protected $hidden = [
+      
+    ];
+
+    /**
+     * The attributes that should be cast to native types.
+     *
+     * @var array
+     */
     protected $casts = [
         'created_at'        => 'datetime:Y-m-d H:i:s',
         'updated_at'        => 'datetime:Y-m-d H:i:s',
         'deleted_at'        => 'datetime:Y-m-d H:i:s',
     ];
-
-    /** 
-     * The relationships that should always be loaded. 
-     * 
-     * @var array 
-     * 
-     */
-    protected $with = []; 
-
-    //** Package Related Functions */
 
     /**
      * Return the sluggable configuration array for this model.
@@ -46,24 +64,15 @@ class MemberCategory extends Model
         ];
     }
 
+    //** Package Related Functions */
+
+    //...
+
     //** Accessors & Mutators */
 
     //...
 
     //** belongsTo, belongsToMany, hasOne, hasMany relationships */
-    
-    public function createdByUser()
-    {
-        return $this->belongsTo("App\Models\User", 'created_by_user_id', 'id');
-    }
 
-    public function updatedByUser()
-    {
-        return $this->belongsTo("App\Models\User", 'updated_by_user_id', 'id');
-    }
-
-    public function members() 
-    {
-        return $this->hasMany('App\Models\Member\Member', 'member_category_id', 'id'); 
-    }
+    //...
 }
