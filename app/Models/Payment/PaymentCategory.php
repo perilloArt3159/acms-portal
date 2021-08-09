@@ -1,17 +1,16 @@
 <?php
 
-namespace App\Models\User;
+namespace App\Models\Payment;
 
 use Cviebrock\EloquentSluggable\Sluggable;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
-class User extends Authenticatable
+class PaymentCategory extends Model
 {
-    use HasFactory, Notifiable, Sluggable;
+    use HasFactory, SoftDeletes, Sluggable;
 
     //** Variables */
 
@@ -20,7 +19,7 @@ class User extends Authenticatable
      *
      * @var string
      */
-    protected $table = "users";
+    protected $table = "payment_categories"; 
 
     /**
      * The attributes that are mass assignable.
@@ -28,9 +27,10 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name',
-        'email',
-        'password',
+        'created_by_user_id', 
+        'updated_by_user_id', 
+        'name', 
+        'description', 
     ];
 
     /**
@@ -39,8 +39,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password',
-        'remember_token',
+      
     ];
 
     /**
@@ -49,18 +48,10 @@ class User extends Authenticatable
      * @var array
      */
     protected $casts = [
-        'email_verified_at' => 'datetime',
+        'created_at'        => 'datetime:Y-m-d H:i:s',
+        'updated_at'        => 'datetime:Y-m-d H:i:s',
+        'deleted_at'        => 'datetime:Y-m-d H:i:s',
     ];
-
-    /** 
-     * The relationships that should always be loaded. 
-     * 
-     * @var array 
-     * 
-     */
-    protected $with = []; 
-
-    //** Package Related Functions */
 
     /**
      * Return the sluggable configuration array for this model.
@@ -76,11 +67,23 @@ class User extends Authenticatable
         ];
     }
 
+    //** Package Related Functions */
+
+    //...
+
     //** Accessors & Mutators */
 
     //...
-    
+
     //** belongsTo, belongsToMany, hasOne, hasMany relationships */
 
-    //...
+    public function createdByUser()
+    {
+        return $this->belongsTo("App\Models\Auth\User", 'created_by_user_id', 'id');
+    }
+
+    public function updatedByUser()
+    {
+        return $this->belongsTo("App\Models\Auth\User", 'updated_by_user_id', 'id');
+    }
 }

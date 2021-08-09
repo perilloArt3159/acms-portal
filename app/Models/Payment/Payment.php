@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\Member;
+namespace App\Models\Payment;
 
 use Cviebrock\EloquentSluggable\Sluggable;
 
@@ -8,13 +8,18 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class MemberCategory extends Model
+class Payment extends Model
 {
     use HasFactory, SoftDeletes, Sluggable;
 
     //** Variables */
 
-    protected $table = "member_categories";
+    /**
+     * Define Table Name.
+     *
+     * @var string
+     */
+    protected $table = "payments"; 
 
     /**
      * The attributes that are mass assignable.
@@ -24,8 +29,20 @@ class MemberCategory extends Model
     protected $fillable = [
         'created_by_user_id',
         'updated_by_user_id', 
-        'name',
-        'description'
+        'payment_category_id',
+        'code', 
+        'name', 
+        'description', 
+        'amount'
+    ];
+
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+    protected $hidden = [
+      
     ];
 
     /**
@@ -39,16 +56,6 @@ class MemberCategory extends Model
         'deleted_at'        => 'datetime:Y-m-d H:i:s',
     ];
 
-    /** 
-     * The relationships that should always be loaded. 
-     * 
-     * @var array 
-     * 
-     */
-    protected $with = []; 
-
-    //** Package Related Functions */
-
     /**
      * Return the sluggable configuration array for this model.
      *
@@ -58,29 +65,38 @@ class MemberCategory extends Model
     {
         return [
             'slug' => [
-                'source' => 'name'
+                'source' => 'code'
             ]
         ];
     }
+
+    //** Package Related Functions */
+
+    //...
 
     //** Accessors & Mutators */
 
     //...
 
     //** belongsTo, belongsToMany, hasOne, hasMany relationships */
-    
+
     public function createdByUser()
     {
-        return $this->belongsTo("App\Models\Auth\User", 'created_by_user_id', 'id');
+        return $this->belongsTo('App\Models\Auth\User', 'created_by_user_id', 'id');
     }
 
     public function updatedByUser()
     {
-        return $this->belongsTo("App\Models\Auth\User", 'updated_by_user_id', 'id');
+        return $this->belongsTo('App\Models\Auth\User', 'updated_by_user_id', 'id');
     }
 
-    public function members() 
+    public function paymentCategory() 
     {
-        return $this->hasMany('App\Models\Member\Member', 'member_category_id', 'id'); 
+        return $this->belongsTo('App\Models\Payment\PaymentCategory', 'payment_category_id', 'id'); 
+    }
+
+    public function userPayments() 
+    {
+        return $this->hasMany('App\Models\Payment\UserPayment', 'payment_id', 'id');
     }
 }

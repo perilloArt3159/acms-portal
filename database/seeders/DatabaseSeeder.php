@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use Database\Seeders\Users\UserSeeder;
+use Database\Seeders\Auth\UserSeeder;
 use Database\Seeders\Members\MemberCategorySeeder;
 use Database\Seeders\Members\MemberSeeder; 
 

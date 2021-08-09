@@ -1,16 +1,17 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Auth;
 
 use Cviebrock\EloquentSluggable\Sluggable;
 
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
-class PaymentCategory extends Model
+class User extends Authenticatable
 {
-    use HasFactory, SoftDeletes, Sluggable;
+    use HasFactory, Notifiable, Sluggable;
 
     //** Variables */
 
@@ -19,7 +20,7 @@ class PaymentCategory extends Model
      *
      * @var string
      */
-    protected $table = ""; 
+    protected $table = "users";
 
     /**
      * The attributes that are mass assignable.
@@ -27,7 +28,9 @@ class PaymentCategory extends Model
      * @var array
      */
     protected $fillable = [
-      
+        'name',
+        'email',
+        'password',
     ];
 
     /**
@@ -36,7 +39,8 @@ class PaymentCategory extends Model
      * @var array
      */
     protected $hidden = [
-      
+        'password',
+        'remember_token',
     ];
 
     /**
@@ -45,10 +49,18 @@ class PaymentCategory extends Model
      * @var array
      */
     protected $casts = [
-        'created_at'        => 'datetime:Y-m-d H:i:s',
-        'updated_at'        => 'datetime:Y-m-d H:i:s',
-        'deleted_at'        => 'datetime:Y-m-d H:i:s',
+        'email_verified_at' => 'datetime',
     ];
+
+    /** 
+     * The relationships that should always be loaded. 
+     * 
+     * @var array 
+     * 
+     */
+    protected $with = []; 
+
+    //** Package Related Functions */
 
     /**
      * Return the sluggable configuration array for this model.
@@ -64,15 +76,14 @@ class PaymentCategory extends Model
         ];
     }
 
-    //** Package Related Functions */
-
-    //...
-
     //** Accessors & Mutators */
 
     //...
-
+    
     //** belongsTo, belongsToMany, hasOne, hasMany relationships */
 
-    //...
+    public function userPayments()
+    {
+        return $this->hasMany('App\Models\Payment\UserPayment', 'user_id', 'id');
+    }
 }

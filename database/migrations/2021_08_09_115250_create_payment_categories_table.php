@@ -18,6 +18,8 @@ class CreatePaymentCategoriesTable extends Migration
             $table->foreignId('created_by_user_id')->nullable()->constrained('users')->onUpdate('cascade')->onDelete('set null');
             $table->foreignId('updated_by_user_id')->nullable()->constrained('users')->onUpdate('cascade')->onDelete('set null');
             $table->string('slug')->unique();
+            $table->string('name')->unique();
+            $table->text('description')->nullable(); 
             $table->timestamps();
             $table->softDeletes();
         });
