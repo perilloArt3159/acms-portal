@@ -32,8 +32,8 @@ class PaymentUserSeeder extends Seeder
 
                 if(!$uniqueRow)
                 {
-                    $this->command->line("Row Entry User-Payment : {$userId}-{$paymentId} already exists"); 
-                    $this->command->line("Recalculating combination...");
+                    $this->command->warn("Row Entry User-Payment : {$userId}-{$paymentId} already exists"); 
+                    $this->command->warn("Recalculating combination...");
                 }
             }
             while(!$uniqueRow); 
@@ -58,8 +58,8 @@ class PaymentUserSeeder extends Seeder
         //! Return maxRows instead to avoid infinite loops 
         if($rowCount > $maxRows)
         {
-            $this->command->line("Provided Row Count {$rowCount} exceeds the max combination of {$maxRows}!");
-            $this->command->line("Will insert {$maxRows} rows instead..."); 
+            $this->command->warn("Provided Row Count {$rowCount} exceeds the max combination of {$maxRows}!");
+            $this->command->warn("Will insert {$maxRows} rows instead..."); 
 
             return $maxRows; 
         }
