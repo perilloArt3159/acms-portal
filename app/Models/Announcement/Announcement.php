@@ -19,7 +19,7 @@ class Announcement extends Model
      *
      * @var string
      */
-    protected $table = ""; 
+    protected $table = "announcements"; 
 
     /**
      * The attributes that are mass assignable.
@@ -27,7 +27,8 @@ class Announcement extends Model
      * @var array
      */
     protected $fillable = [
-      
+        'title', 
+        'content'
     ];
 
     /**

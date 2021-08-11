@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use Database\Seeders\Announcements\AnnouncementSeeder;
 use Database\Seeders\Auth\UserSeeder;
 use Database\Seeders\Members\MemberCategorySeeder;
 use Database\Seeders\Members\MemberSeeder; 
@@ -32,6 +33,7 @@ class DatabaseSeeder extends Seeder
                     PaymentSeeder::class, 
                     PaymentUserSeeder::class, 
                     NotificationSeeder::class, 
+                    AnnouncementSeeder::class
                 ]
             );
         }
