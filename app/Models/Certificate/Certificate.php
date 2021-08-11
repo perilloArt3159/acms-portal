@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\Member;
+namespace App\Models\Certificate;
 
 use Cviebrock\EloquentSluggable\Sluggable;
 
@@ -8,13 +8,18 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class MemberCategory extends Model
+class Certificate extends Model
 {
     use HasFactory, SoftDeletes, Sluggable;
 
     //** Variables */
 
-    protected $table = "member_categories";
+    /**
+     * Define Table Name.
+     *
+     * @var string
+     */
+    protected $table = "certificates"; 
 
     /**
      * The attributes that are mass assignable.
@@ -23,9 +28,19 @@ class MemberCategory extends Model
      */
     protected $fillable = [
         'created_by_user_id',
-        'updated_by_user_id', 
-        'name',
-        'description'
+        'updated_by_user_id',
+        'signee_id', 
+        'name', 
+        'file_template'
+    ];
+
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+    protected $hidden = [
+      
     ];
 
     /**
@@ -38,14 +53,6 @@ class MemberCategory extends Model
         'updated_at'        => 'datetime:Y-m-d H:i:s',
         'deleted_at'        => 'datetime:Y-m-d H:i:s',
     ];
-
-    /** 
-     * The relationships that should always be loaded. 
-     * 
-     * @var array 
-     * 
-     */
-    protected $with = []; 
 
     //** Package Related Functions */
 
@@ -68,7 +75,7 @@ class MemberCategory extends Model
     //...
 
     //** belongsTo, belongsToMany, hasOne, hasMany relationships */
-    
+
     public function createdByUser()
     {
         return $this->belongsTo('App\Models\Auth\User', 'created_by_user_id', 'id');
@@ -79,8 +86,9 @@ class MemberCategory extends Model
         return $this->belongsTo('App\Models\Auth\User', 'updated_by_user_id', 'id');
     }
 
-    public function members() 
+    public function signee() 
     {
-        return $this->hasMany('App\Models\Member\Member', 'member_category_id', 'id'); 
+        return $this->belongsTo('App\Models\Certificate\CertificateSignee', 'signee_id', 'id')
     }
+
 }

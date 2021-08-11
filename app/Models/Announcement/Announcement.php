@@ -27,6 +27,8 @@ class Announcement extends Model
      * @var array
      */
     protected $fillable = [
+        'created_by_user_id',
+        'updated_by_user_id', 
         'title', 
         'content'
     ];
