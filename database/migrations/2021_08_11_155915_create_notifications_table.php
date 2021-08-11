@@ -16,10 +16,10 @@ class CreateNotificationsTable extends Migration
         Schema::create('notifications', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->nullable()->constrained('users')->onUpdate('cascade')->onDelete('cascade');
-            $table->string('slug')->unique();
             $table->string('title'); 
             $table->text('content');
-            $table->timestamp('created_at')->nullable();
+            $table->boolean('is_read')->default(false);
+            $table->timestamps();
         });
     }
 
