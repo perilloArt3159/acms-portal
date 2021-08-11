@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\Member;
+namespace App\Models\Election;
 
 use Cviebrock\EloquentSluggable\Sluggable;
 
@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Member extends Model
+class Election extends Model
 {
     use HasFactory, SoftDeletes, Sluggable;
 
@@ -19,7 +19,7 @@ class Member extends Model
      *
      * @var string
      */
-    protected $table = "members"; 
+    protected $table = "elections"; 
 
     /**
      * The attributes that are mass assignable.
@@ -27,11 +27,11 @@ class Member extends Model
      * @var array
      */
     protected $fillable = [
-        "member_category_id", 
-        "first_name", 
-        "last_name", 
-        "middle_name", 
-        "birth_date", 
+        'created_by_user_id',
+        'updated_by_user_id', 
+        'title', 
+        'open_at', 
+        'close_at'
     ];
 
     /**
@@ -54,18 +54,6 @@ class Member extends Model
         'deleted_at'        => 'datetime:Y-m-d H:i:s',
     ];
 
-    /** 
-     * The relationships that should always be loaded. 
-     * 
-     * @var array 
-     * 
-     */
-    protected $with = [
-        'memberCategory', 
-        'contact', 
-        'license'
-    ]; 
-
     //** Package Related Functions */
 
     /**
@@ -77,42 +65,29 @@ class Member extends Model
     {
         return [
             'slug' => [
-                'source' => 'fullname'
+                'source' => 'title'
             ]
         ];
     }
 
     //** Accessors & Mutators */
 
-    /**
-     * Generate Fullname Attribute.
-     *
-     * @var string
-     */
-    public function getFullnameAttribute(): string
-    {
-        return $this->last_name . ' ' . $this->first_name . ' ' . $this->middle_name;
-    }
+    //...
 
     //** belongsTo, belongsToMany, hasOne, hasMany relationships */
 
-    public function memberCategory()
+    public function createdByUser()
     {
-        return $this->belongsTo('App\Models\Member\MemberCategory', 'member_category_id', 'id');
+        return $this->belongsTo('App\Models\Auth\User', 'created_by_user_id', 'id');
     }
 
-    public function electionCandidate()
+    public function updatedByUser()
     {
-        return $this->belongsToMany('App\Models\Election\Election', 'election_candidates', 'member_id', 'election_id');
+        return $this->belongsTo('App\Models\Auth\User', 'updated_by_user_id', 'id');
     }
 
-    public function contact() 
+    public function candidates() 
     {
-        return $this->hasOne('App\Models\Member\MemberContact', 'member_id', 'id'); 
-    }
-
-    public function license() 
-    {
-        return $this->hasOne('App\Models\Member\MemberLicense', 'member_id', 'id'); 
+        return $this->belongsToMany('App\Models\Member\Member', 'election_candidates', 'election_id', 'member_id');
     }
 }
