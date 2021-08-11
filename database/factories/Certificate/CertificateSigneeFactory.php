@@ -1,20 +1,20 @@
 <?php
 
-namespace Database\Factories\Payment;
+namespace Database\Factories\Certificate;
 
-use App\Models\Payment\PaymentUser;
+use App\Models\Certificate\CertificateSignee;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str; 
 
-class PaymentUserFactory extends Factory
+class CertificateSigneeFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = PaymentUser::class;
+    protected $model = CertificateSignee::class;
 
     /**
      * Define the model's default state.
@@ -24,8 +24,8 @@ class PaymentUserFactory extends Factory
     public function definition()
     {
         return [
-            'amount_paid'        => $this->faker->randomFloat(2, 100, 10000),
-            'file_image_receipt' => $this->faker->unique()->imageUrl()
+            'name'                  =>  $this->faker->words(rand(1, 3), true),
+            'file_image_signature'  =>  $this->faker->unique()->imageUrl()
         ];
     }
 }

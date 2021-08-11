@@ -4,6 +4,8 @@ namespace Database\Seeders;
 
 use Database\Seeders\Announcements\AnnouncementSeeder;
 use Database\Seeders\Auth\UserSeeder;
+use Database\Seeders\Certificates\CertificateSeeder; 
+use Database\Seeders\Certificates\CertificateSigneeSeeder;
 use Database\Seeders\Members\MemberCategorySeeder;
 use Database\Seeders\Members\MemberSeeder; 
 use Database\Seeders\Payments\PaymentSeeder;
@@ -33,7 +35,9 @@ class DatabaseSeeder extends Seeder
                     PaymentSeeder::class, 
                     PaymentUserSeeder::class, 
                     NotificationSeeder::class, 
-                    AnnouncementSeeder::class
+                    AnnouncementSeeder::class, 
+                    CertificateSigneeSeeder::class, 
+                    CertificateSeeder::class
                 ]
             );
         }

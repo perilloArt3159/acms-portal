@@ -88,7 +88,6 @@ class Certificate extends Model
 
     public function signee() 
     {
-        return $this->belongsTo('App\Models\Certificate\CertificateSignee', 'signee_id', 'id')
+        return $this->belongsTo('App\Models\Certificate\CertificateSignee', 'signee_id', 'id');
     }
-
 }

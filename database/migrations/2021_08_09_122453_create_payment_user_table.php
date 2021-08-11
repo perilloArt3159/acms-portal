@@ -19,7 +19,7 @@ class CreatePaymentUserTable extends Migration
             $table->foreignId('created_by_user_id')->nullable()->constrained('users')->onUpdate('cascade')->onDelete('set null');
             $table->foreignId('updated_by_user_id')->nullable()->constrained('users')->onUpdate('cascade')->onDelete('set null');
             $table->float('amount_paid')->default(0); 
-            $table->string('file_proof_of_payment')->nullable()->unique(); 
+            $table->string('file_image_receipt')->unique(); 
             $table->timestamps();
 
 

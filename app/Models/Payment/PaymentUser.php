@@ -29,7 +29,7 @@ class PaymentUser extends Model
         'user_id', 
         'payment_id', 
         'amount_paid', 
-        'file_proof_of_payment', 
+        'file_image_receipt', 
     ];
 
     /**
