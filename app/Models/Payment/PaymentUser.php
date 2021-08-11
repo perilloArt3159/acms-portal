@@ -5,7 +5,7 @@ namespace App\Models\Payment;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class UserPayment extends Model
+class PaymentUser extends Model
 {
     use HasFactory;
 
@@ -16,7 +16,7 @@ class UserPayment extends Model
      *
      * @var string
      */
-    protected $table = "user_payments"; 
+    protected $table = "payment_user"; 
 
     /**
      * The attributes that are mass assignable.

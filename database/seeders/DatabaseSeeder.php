@@ -7,6 +7,7 @@ use Database\Seeders\Members\MemberCategorySeeder;
 use Database\Seeders\Members\MemberSeeder; 
 use Database\Seeders\Payments\PaymentSeeder;
 use Database\Seeders\Payments\PaymentCategorySeeder;
+use Database\Seeders\Payments\PaymentUserSeeder;
 
 use Illuminate\Database\Seeder;
 
@@ -28,7 +29,8 @@ class DatabaseSeeder extends Seeder
                     MemberCategorySeeder::class,
                     MemberSeeder::class,  
                     PaymentCategorySeeder::class,
-                    PaymentSeeder::class 
+                    PaymentSeeder::class, 
+                    PaymentUserSeeder::class
                 ]
             );
         }

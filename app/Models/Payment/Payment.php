@@ -97,6 +97,6 @@ class Payment extends Model
 
     public function userPayments() 
     {
-        return $this->hasMany('App\Models\Payment\UserPayment', 'payment_id', 'id');
+        return $this->hasMany('App\Models\Payment\PaymentUser', 'payment_id', 'id');
     }
 }

@@ -24,7 +24,7 @@ class MemberCategoryFactory extends Factory
     public function definition()
     {
         return [
-            'name'          =>  Str::upper($this->faker->words(rand(1, 3), true)), 
+            'name'          =>  Str::upper($this->faker->unique()->words(rand(1, 3), true)), 
             'description'   =>   $this->faker->sentence(rand(10,25)),
         ];
     }

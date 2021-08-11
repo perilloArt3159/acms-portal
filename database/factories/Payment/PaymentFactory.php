@@ -24,8 +24,8 @@ class PaymentFactory extends Factory
     public function definition()
     {
         return [
-            'code'        => Str::upper($this->faker->word()),
-            'name'        => Str::upper($this->faker->words(3, true)),
+            'code'        => Str::upper($this->faker->unique()->word()),
+            'name'        => Str::upper($this->faker->unique()->words(3, true)),
             'description' => $this->faker->sentence(),
             'amount'      => $this->faker->randomFloat(2, 100, 10000),
         ];
