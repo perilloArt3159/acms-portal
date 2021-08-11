@@ -19,7 +19,7 @@ class CreateElectionCandidatesTable extends Migration
             $table->foreignId('member_id')->constrained('members')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
 
-            $table->index(['election_id', 'member_id']); 
+            $table->unique(['election_id', 'member_id']); 
         });
     }
 

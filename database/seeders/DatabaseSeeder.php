@@ -6,6 +6,9 @@ use Database\Seeders\Announcements\AnnouncementSeeder;
 use Database\Seeders\Auth\UserSeeder;
 use Database\Seeders\Certificates\CertificateSeeder; 
 use Database\Seeders\Certificates\CertificateSigneeSeeder;
+use Database\Seeders\Elections\ElectionSeeder;
+use Database\Seeders\Elections\ElectionCandidateSeeder;
+use Database\Seeders\Elections\ElectionTallySeeder;
 use Database\Seeders\Members\MemberCategorySeeder;
 use Database\Seeders\Members\MemberSeeder; 
 use Database\Seeders\Payments\PaymentSeeder;
@@ -37,7 +40,10 @@ class DatabaseSeeder extends Seeder
                     NotificationSeeder::class, 
                     AnnouncementSeeder::class, 
                     CertificateSigneeSeeder::class, 
-                    CertificateSeeder::class
+                    CertificateSeeder::class, 
+                    ElectionSeeder::class, 
+                    ElectionCandidateSeeder::class, 
+                    ElectionTallySeeder::class
                 ]
             );
         }
