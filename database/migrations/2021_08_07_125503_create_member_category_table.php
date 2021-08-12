@@ -32,6 +32,6 @@ class CreateMemberCategoryTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('member_category');
+        Schema::dropIfExists('member_categories');
     }
 }

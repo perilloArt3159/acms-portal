@@ -31,9 +31,9 @@ class DatabaseSeeder extends Seeder
         {
             $this->call(
                 [
-                    UserSeeder::class,
                     MemberCategorySeeder::class,
                     MemberSeeder::class,  
+                    UserSeeder::class,
                     PaymentCategorySeeder::class,
                     PaymentSeeder::class, 
                     PaymentUserSeeder::class, 
