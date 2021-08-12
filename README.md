@@ -46,9 +46,10 @@ Project is created with:
 |:---------------------------------------------------------------------------------------------:                |:---------------:|:-------------------------------------------:  |
 |[spatie/laravel-permission](https://spatie.be/docs/laravel-permission/v3/installation-laravel)                 |`^4.0.0`         |Associate Users with Roles and Permissions     |
 |[spatie/laravel-activitylog](https://spatie.be/docs/laravel-activitylog/v4/introduction)                       |`^4.0.0`         |Activity Logging                               |
+|[cviebrock/eloquent-sluggable](https://github.com/cviebrock/eloquent-sluggable)                                |`^8.0.8`         |Generate Slugs for Eloquent Models             |
+|[marcinOrlowski/laravel-api-response-builder](https://github.com/MarcinOrlowski/laravel-api-response-builder)  |`^9.3.0`         |API response builder                           |
 
 ### NPM Packages
-
 
 ## Project Setup
 
