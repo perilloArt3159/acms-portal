@@ -14,7 +14,7 @@ class AddMemberIdForeignToUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->foreignId('member_id')->constrained('members')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('member_id')->after('id')->constrained('members')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

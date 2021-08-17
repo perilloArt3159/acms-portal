@@ -50,6 +50,13 @@ class {{ class }} extends Model
         'deleted_at'        => 'datetime:Y-m-d H:i:s',
     ];
 
+    /**
+     * Indicates if the model should be timestamped.
+     *
+     * @var bool
+     */
+    public $timestamps = true;
+
     //** Package Related Functions */
 
     /**
