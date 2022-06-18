@@ -1,3 +1,3 @@
 # ACMS PORTAL 
 
-Angeles City Medical Society Member Portal for Payments
+Angeles City Medical Society Member Portal for Payment and Election Management.
